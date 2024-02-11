@@ -7,7 +7,7 @@ public class PlayerMovementNew : MonoBehaviour
     Rigidbody rb;
 
     [SerializeField] float movementSpeed;
-    [SerializeField] float forwardForce = 10f;
+    [SerializeField] float forwardForce = 200f;
     [SerializeField] float rotationForce = 30f;
 
     // Start is called before the first frame update
@@ -21,23 +21,31 @@ public class PlayerMovementNew : MonoBehaviour
     {
         float forward = Input.GetAxisRaw("Vertical");
         float side = Input.GetAxisRaw("Horizontal");
-        if (forward > 0)
-        {
-            rb.AddForce(Vector3.forward * forwardForce);
-        }
-        else if (forward < 0)
-        {
-            rb.AddForce(Vector3.back * forwardForce);
-        }
 
-        if (side < 0)
-        {
-            rb.AddForce(Vector3.left * rotationForce);
-        }
-        else if (side > 0)
-        {
-            rb.AddForce(Vector3.right * rotationForce);
-        }
+        Vector3 newPos = new Vector3(side, 0, forward) * movementSpeed * Time.deltaTime;
+
+        rb.MovePosition(transform.position + newPos);
+
+        //Forces will be used in final implementation
+        // Unity has a wheel collider class specifically for realistic car movement
+        // this system will have to be updated to implement that.
+        /*        if (forward > 0)
+                {
+                    rb.AddForce(Vector3.forward * forwardForce);
+                }
+                else if (forward < 0)
+                {
+                    rb.AddForce(Vector3.back * forwardForce);
+                }
+
+                if (side < 0)
+                {
+                    rb.AddForce(Vector3.left * rotationForce);
+                }
+                else if (side > 0)
+                {
+                    rb.AddForce(Vector3.right * rotationForce);
+                }*/
     }
 
     // ***This functionality should be moved to another class***
@@ -49,7 +57,6 @@ public class PlayerMovementNew : MonoBehaviour
     // Future Functionality:
     //      -- Before executing the above steps, a check should be initiated against the player's
     //          carrying capacity.
-
 
     private void OnTriggerEnter(Collider other)
     {
