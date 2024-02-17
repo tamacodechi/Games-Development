@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - Pickup_Spawn_Point
   layers:
   - Default
   - TransparentFX
