@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     public float timeRemaining = 120;
     public bool timerIsRunning = true;
-    public TextMeshPro timeText;
+    public TextMeshProUGUI timeText;
     void Start()
     {
         timerIsRunning = true;

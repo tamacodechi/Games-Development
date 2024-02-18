@@ -4,7 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - pickupSound: {fileID: 8300000, guid: 6c18d544261564a4e84b8882d32d10a2, type: 3}
+  - pickupSound: {instanceID: 0}
+  - pickupAudioSource: {instanceID: 0}
+  - gameSession: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
