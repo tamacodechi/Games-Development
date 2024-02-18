@@ -6,6 +6,7 @@ public class Pickup_Handler : MonoBehaviour
 {
     public AudioClip pickupSound;
     public AudioSource pickupAudioSource;
+    public AudioSource parentAudioSource;
     public GameSessionManager gameSession;
     /* Approach adapted from https://docs.unity3d.com/410/Documentation/ScriptReference/index.Accessing_Other_Game_Objects.html */
 
@@ -17,14 +18,15 @@ public class Pickup_Handler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        parentAudioSource = transform.parent.gameObject.GetComponent<AudioSource>();
         pickupAudioSource = GetComponent<AudioSource>();
         spawnPoint = transform.parent.gameObject.GetComponent<Pickup_Spawn>();
         gameSession = FindObjectOfType<GameSessionManager>();
     }
 
-    void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && spawnPoint != null)
+        if (other.tag == "Player")
         {
             spawnPoint.toggleActive();
             if (gameSession != null)
@@ -32,9 +34,20 @@ public class Pickup_Handler : MonoBehaviour
                 gameSession.AddScore(scoreValue);
                 gameSession.AddCollectible(collectibleValue);
             }
-            /*pickupAudioSource.PlayOneShot(pickupAudioSource.clip, 1f);*/
+            //Works - sound origination is from spawn
+            parentAudioSource.Play(0);
+
+            //Works - sound origination is from camera
             //AudioSource.PlayClipAtPoint(pickupAudioSource.clip, Camera.main.transform.position);
-            playPickupSound();
+
+            //Works - Sound orignation is from pickup
+            //playPickupSound();
+
+            //pickupAudioSource.Play(0);
+            //pickupAudioSource.PlayOneShot(pickupAudioSource.clip, 1f);
+
+
+
             Destroy(gameObject);
 
             Debug.Log("Pickup Encountered in handler");
