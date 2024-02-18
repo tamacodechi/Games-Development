@@ -10,8 +10,8 @@ public class Pickup_Handler : MonoBehaviour
     /* Approach adapted from https://docs.unity3d.com/410/Documentation/ScriptReference/index.Accessing_Other_Game_Objects.html */
 
     Pickup_Spawn spawnPoint;
-    [SerializeField] int scoreValue;
-    [SerializeField] int collectibleValue;
+    [SerializeField] int scoreValue = 1000;
+    [SerializeField] int collectibleValue = 1;
 
 
     // Start is called before the first frame update
@@ -20,13 +20,11 @@ public class Pickup_Handler : MonoBehaviour
         pickupAudioSource = GetComponent<AudioSource>();
         spawnPoint = transform.parent.gameObject.GetComponent<Pickup_Spawn>();
         gameSession = FindObjectOfType<GameSessionManager>();
-        scoreValue = 1000;
-        collectibleValue = 1;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && spawnPoint != null)
         {
             spawnPoint.toggleActive();
             if (gameSession != null)
@@ -35,7 +33,7 @@ public class Pickup_Handler : MonoBehaviour
                 gameSession.AddCollectible(collectibleValue);
             }
             /*pickupAudioSource.PlayOneShot(pickupAudioSource.clip, 1f);*/
-            AudioSource.PlayClipAtPoint(pickupAudioSource.clip, Camera.main.transform.position);
+            //AudioSource.PlayClipAtPoint(pickupAudioSource.clip, Camera.main.transform.position);
             playPickupSound();
             Destroy(gameObject);
 

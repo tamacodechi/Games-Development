@@ -136,7 +136,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6c18d544261564a4e84b8882d32d10a2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fa24f96ac6d0bab47af7d8d16d4a9f63, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f04f0162205a284aa59b71bd81a0145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSound: {fileID: 8300000, guid: 6c18d544261564a4e84b8882d32d10a2, type: 3}
+  pickupSound: {fileID: 8300000, guid: fa24f96ac6d0bab47af7d8d16d4a9f63, type: 3}
   pickupAudioSource: {fileID: 0}
   gameSession: {fileID: 0}
   scoreValue: 1000
