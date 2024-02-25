@@ -40,7 +40,7 @@ public class WalkingPeopleScript : MonoBehaviour
 
         if (Vector3.Distance(transform.position, PathPoints[index].position) < minDistance)
         {
-            if (index >= 0 && index < PathPoints.Length)
+            if (index >= 0 && index < PathPoints.Length-1)
             {
                 index += 1;
             }
