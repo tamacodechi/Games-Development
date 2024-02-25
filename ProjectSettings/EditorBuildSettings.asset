@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/allWorld.unity
+    guid: c0e7de92ae785274ab8c3756c20e7201
+  - enabled: 1
+    path: Assets/Scenes/PostRoundShop.unity
+    guid: b9248dfd71132534dac273a677f16668
   m_configObjects: {}
