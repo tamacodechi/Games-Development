@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class carController : MonoBehaviour
 {
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
+    [SerializeField] WheelCollider frontLeftWheelCollider;
+    [SerializeField] WheelCollider frontRightWheelCollider;
+    [SerializeField] WheelCollider rearLeftWheelCollider;
+    [SerializeField] WheelCollider rearRightWheelCollider;
+
+    [SerializeField] Transform frontLeftWheelTransform;
+    [SerializeField] Transform frontRightWheelTransform;
+    [SerializeField] Transform rearLeftWheelTransform;
+    [SerializeField] Transform rearRightWheelTransform;
 
     private float horizontalInput;
     private float verticalInput;
@@ -18,28 +25,7 @@ public class carController : MonoBehaviour
     [SerializeField] private float motorForce;
     [SerializeField] private float maxSteerAngle;
 
-    [SerializeField] private WheelCollider frontLeftWheelCollider;
-    [SerializeField] private WheelCollider frontRightWheelCollider;
-    [SerializeField] private WheelCollider rearLeftWheelCollider;
-    [SerializeField] private WheelCollider rearRightWheelCollider;
 
-    [SerializeField] private Transform frontLeftWheelTransform;
-    [SerializeField] private Transform frontRightWheelTransform;
-    [SerializeField] private Transform rearLeftWheelTransform;
-    [SerializeField] private Transform rearRightWheelTransform;
-
-
-    /*    // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }*/
 
 
     private void FixedUpdate()
@@ -53,12 +39,9 @@ public class carController : MonoBehaviour
 
     private void GetInput()
     {
-        horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
-
-        //Debug.Log("Horizontal Input is " + horizontalInput);
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
         isBraking = Input.GetKey(KeyCode.Space);
-
     }
 
     private void HandleMotor()
@@ -66,15 +49,13 @@ public class carController : MonoBehaviour
         
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
-        currentBrakeForce = isBraking ? brakeForce : 0f;
-        if (isBraking)
-        {
-            ApplyBreaking();
-        }
+        ApplyBraking();
+        
     }
 
-    private void ApplyBreaking()
+    private void ApplyBraking()
     {
+        currentBrakeForce = isBraking ? brakeForce : 0f;
         frontLeftWheelCollider.brakeTorque = currentBrakeForce;
         frontRightWheelCollider.brakeTorque = currentBrakeForce;
         rearLeftWheelCollider.brakeTorque = currentBrakeForce;
@@ -90,19 +71,19 @@ public class carController : MonoBehaviour
 
     private void UpdateWheels()
     {
-        UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelTransform);
-        UpdateSingleWheel(frontRightWheelCollider, frontRightWheelTransform);
-        UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
-        UpdateSingleWheel(rearRightWheelCollider, rearRightWheelTransform);
+        UpdateWheel(frontLeftWheelCollider, frontLeftWheelTransform);
+        UpdateWheel(frontRightWheelCollider, frontRightWheelTransform);
+        UpdateWheel(rearLeftWheelCollider, rearLeftWheelTransform);
+        UpdateWheel(rearRightWheelCollider, rearRightWheelTransform);
     }
 
-    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
+    private void UpdateWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
-        Vector3 pos;
-        Quaternion rot;
+        Vector3 position;
+        Quaternion rotation;
 
-        wheelCollider.GetWorldPose(out pos, out rot);
-        wheelTransform.rotation = rot;
-        wheelTransform.position = pos;
+        wheelCollider.GetWorldPose(out position, out rotation);
+        wheelTransform.rotation = rotation;
+        wheelTransform.position = position;
     }
 }
