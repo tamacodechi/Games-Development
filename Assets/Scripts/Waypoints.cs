@@ -19,8 +19,12 @@ public class Waypoints : MonoBehaviour
         for (int i = 0; i< transform.childCount -1;i++)
         {
             Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild(i + 1).position);
+            if(i == transform.childCount - 2)
+            {
+                Gizmos.DrawLine(transform.GetChild(transform.childCount - 1).position, transform.GetChild(0).position);
+            }
         }
-        Gizmos.DrawLine(transform.GetChild(transform.childCount - 1).position, transform.GetChild(0).position);
+        
     }
     public Transform GetNextWaypoint(Transform currentWaypoint)
     {
