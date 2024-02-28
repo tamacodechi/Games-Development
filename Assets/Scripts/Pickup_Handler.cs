@@ -7,7 +7,9 @@ public class Pickup_Handler : MonoBehaviour
     public AudioClip pickupSound;
     public AudioSource pickupAudioSource;
     public AudioSource parentAudioSource;
-    public GameSessionManager gameSession;
+    /*public GameSessionManager gameSession;*/
+    /*public PlayerManager playerManager;*/
+    public PlayerStats playerStats;
     /* Approach adapted from https://docs.unity3d.com/410/Documentation/ScriptReference/index.Accessing_Other_Game_Objects.html */
 
     Pickup_Spawn spawnPoint;
@@ -21,20 +23,20 @@ public class Pickup_Handler : MonoBehaviour
         parentAudioSource = transform.parent.gameObject.GetComponent<AudioSource>();
         pickupAudioSource = GetComponent<AudioSource>();
         spawnPoint = transform.parent.gameObject.GetComponent<Pickup_Spawn>();
-        gameSession = FindObjectOfType<GameSessionManager>();
+        playerStats = FindObjectOfType<PlayerStats>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            spawnPoint.toggleActive();
-            if (gameSession != null)
+            spawnPoint?.toggleActive();
+            if (playerStats != null)
             {
-                gameSession.AddScore(scoreValue);
-                gameSession.AddCollectible(collectibleValue);
+                playerStats.AddToScore(scoreValue);
+                playerStats.AddToPickupsCollected();
             }
-            //Works - sound origination is from spawn
+            //Works - sound origination is from spawn        
             parentAudioSource.Play(0);
 
             //Works - sound origination is from camera
@@ -49,8 +51,6 @@ public class Pickup_Handler : MonoBehaviour
 
 
             Destroy(gameObject);
-
-            Debug.Log("Pickup Encountered in handler");
         }
     }
 

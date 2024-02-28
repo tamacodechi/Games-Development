@@ -28,9 +28,9 @@ public class Pickup_Spawn : MonoBehaviour
     {       
         if (!isActive && Time.fixedTime%spawnTime == 0)
         {
+            isActive = true;
             GameObject pickupInstantiated = Instantiate(pickup, transform.position, transform.rotation);
             pickupInstantiated.transform.parent = gameObject.transform;
-            isActive = true;
         }
     }
 

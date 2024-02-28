@@ -35,7 +35,7 @@ public class GameSessionInputManager : MonoBehaviour
 
         }
 
-        if (timer.timeRemaining <= Mathf.Epsilon)
+        if (timer.GetTimeRemaining() <= Mathf.Epsilon)
         {
             LoadNextScene();
         }

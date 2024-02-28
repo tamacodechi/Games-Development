@@ -5,77 +5,42 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 /* Adding skeleton for GameSessionManager to test score increase
- * 
- * 
- * 
- * 
- *
- *
  */ 
 
 public class GameSessionManager : MonoBehaviour
 {
-    [SerializeField] int score = 0;
-
-    [SerializeField] int collectibles = 0;
-
-    [SerializeField] float roundTimer = 120;
+    public static GameSessionManager gameSession { get; private set; }
 
     [SerializeField] TextMeshProUGUI roundTimerText;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI collectiblesText;
+    [SerializeField] TextMeshProUGUI pickupsCollectedText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        scoreText.text = score.ToString();
-        collectiblesText.text = collectibles.ToString();
-        roundTimerText.text = roundTimer.ToString();
-    }
+    PlayerStats playerStats;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        updateTimer();
-    }
-    public void ProcessRoundEnd()
-    {
-        if(roundTimer <= 0)
+        if (gameSession != null && gameSession != this)
         {
-            //GoTo next round screen
+            Destroy(this);
+        }
+        else
+        {
+            gameSession = this;
         }
     }
 
-    void reset()
+    public void SetScoreText(string newScoreText)
     {
-       // SceneManager.LoadScene(0);
-
+        scoreText.text = ("Score: " + newScoreText);
     }
 
-    public void AddScore(int scoreValue)
+    public void SetPickupsCollectedText(string newPickupsCollectedText)
     {
-        score += scoreValue;
-        scoreText.text = score.ToString();
-        Debug.Log("Score is " + score);
+        pickupsCollectedText.text = ("Pickups Collected: " + newPickupsCollectedText);
     }
 
-    public void AddCollectible(int collectibleAmount)
+    public void SetTimerText(string newTimerText)
     {
-        collectibles += collectibleAmount;
-        collectiblesText.text = collectibles.ToString();
-        Debug.Log("Colletible value is " + collectibles);
-    }
-
-    //Need to fix time lapse - at this time the purpose of updating the canvas is achieved.
-    private void updateTimer()
-    {
-        float timeLapsed = Time.time;
-        roundTimer = roundTimer - timeLapsed;
-        roundTimerText.text = roundTimer.ToString();
+        roundTimerText.text = ("Time Remaining: " + newTimerText);
     }
 }
