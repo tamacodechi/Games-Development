@@ -7,9 +7,9 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float timeRemaining = 120;
-    public bool timerIsRunning = true;
-    public TextMeshProUGUI timeText;
+    private float timeRemaining = 120;
+    private bool timerIsRunning = true;    
+
     void Start()
     {
         timerIsRunning = true;
@@ -36,10 +36,17 @@ public class Timer : MonoBehaviour
     void DisplayTime(float timeToDisplay)
     {
         timeToDisplay += 1;
-
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        string timerTextString = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        timeText.text = "Time remaining: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+        GameSessionManager.gameSession.SetTimerText(timerTextString);
     }
+
+    public float GetTimeRemaining()
+    {
+        return timeRemaining;
+    }
+
+    
 }

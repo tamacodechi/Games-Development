@@ -25,8 +25,12 @@ public class carController : MonoBehaviour
     [SerializeField] private float motorForce;
     [SerializeField] private float maxSteerAngle;
 
+    public PlayerStats playerStats;
 
-
+    private void Start()
+    {
+        playerStats = FindObjectOfType<PlayerStats>();
+    }
 
     private void FixedUpdate()
     {
@@ -46,9 +50,15 @@ public class carController : MonoBehaviour
 
     private void HandleMotor()
     {
-        
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        float torqueToApply = verticalInput * motorForce * playerStats.GetPlayerSpeedMultiplier();
+
+
+        frontLeftWheelCollider.motorTorque = torqueToApply;
+        frontRightWheelCollider.motorTorque = torqueToApply;
+        rearLeftWheelCollider.motorTorque = torqueToApply;
+        rearRightWheelCollider.motorTorque = torqueToApply;
+        Debug.Log(torqueToApply);
+
         ApplyBraking();
         
     }
