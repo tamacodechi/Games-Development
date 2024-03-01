@@ -59,6 +59,24 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+
+
+    private void StartIdleMotorSound()
+    {
+        Sound idleMotorSound = Array.Find(idleMotorSounds, sound => sound.name == "IdleMotor");
+        if (idleMotorSound == null)
+        {
+            Debug.Log("IdleMotor sound not found");
+            return;
+        }
+
+        idleMotorSource.clip = idleMotorSound.clip;
+        idleMotorSource.loop = true;
+        idleMotorSource.Play();
+    }
+
+
+
     // Starts playing the engine sound
     private void StartEngineSound()
     {
@@ -79,19 +97,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    private void StartIdleMotorSound()
-    {
-        Sound idleMotorSound = Array.Find(idleMotorSounds, sound => sound.name == "IdleMotor");
-        if (idleMotorSound == null)
-        {
-            Debug.Log("IdleMotor sound not found");
-            return;
-        }
 
-        idleMotorSource.clip = idleMotorSound.clip;
-        idleMotorSource.loop = true; 
-        idleMotorSource.Play();
-    }
 
     // Stops playing the engine sound
     private void StopEngineSound()
