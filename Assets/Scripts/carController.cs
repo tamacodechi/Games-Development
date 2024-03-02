@@ -20,6 +20,19 @@ public class carController : MonoBehaviour
     private float currentSteerAngle;
     private bool isBraking;
     private float currentBrakeForce;
+    public float rotationDamping;
+
+    private float sidewaysESlip = 0.4f;
+    private float sidewaysEValue = 1.0f;
+    private float sidewaysASlip = 0.5f;
+    private float sidewaysAValue = 0.75f;
+    private float sidewaysStiffness = 1f;
+
+    private float forwardESlip = 0.4f;
+    private float forwardEValue = 1.0f;
+    private float forwardASlip = 0.5f;
+    private float forwardAValue = 0.75f;
+    private float forwardStiffness = 1f;
 
     [SerializeField] private float brakeForce;
     [SerializeField] private float motorForce;
@@ -30,6 +43,10 @@ public class carController : MonoBehaviour
     private void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
+        frontLeftWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
+        frontRightWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
+        rearLeftWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
+        rearRightWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
     }
 
     private void FixedUpdate()
@@ -38,7 +55,7 @@ public class carController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
-
+        UpdateRotation();
     }
 
     private void GetInput()
@@ -55,8 +72,8 @@ public class carController : MonoBehaviour
 
         frontLeftWheelCollider.motorTorque = torqueToApply;
         frontRightWheelCollider.motorTorque = torqueToApply;
-        rearLeftWheelCollider.motorTorque = torqueToApply;
-        rearRightWheelCollider.motorTorque = torqueToApply;
+/*        rearLeftWheelCollider.motorTorque = torqueToApply;
+        rearRightWheelCollider.motorTorque = torqueToApply;*/
         Debug.Log(torqueToApply);
 
         ApplyBraking();
@@ -77,6 +94,8 @@ public class carController : MonoBehaviour
         currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
+        /*rearLeftWheelCollider.steerAngle = -currentSteerAngle;
+        rearRightWheelCollider.steerAngle = -currentSteerAngle;*/
     }
 
     private void UpdateWheels()
@@ -95,5 +114,30 @@ public class carController : MonoBehaviour
         wheelCollider.GetWorldPose(out position, out rotation);
         wheelTransform.rotation = rotation;
         wheelTransform.position = position;
+
+        if(horizontalInput <= Mathf.Epsilon)
+        {
+            wheelCollider.wheelDampingRate = 15f;
+        }
+        if(verticalInput <= Mathf.Epsilon)
+        {
+            wheelCollider.wheelDampingRate = 15f;
+        }
+
+    }
+
+
+    //Current rotation, normalize the Z, then lerp
+    //Thought Process:
+    //- Update the rotation for the 
+    private void UpdateRotation()
+    {        
+        Quaternion newRotation = gameObject.transform.localRotation;
+        newRotation.z = 0;
+        transform.rotation = Quaternion.Lerp(
+            newRotation,
+            Quaternion.LookRotation(gameObject.transform.forward),
+            Time.deltaTime * rotationDamping
+            );
     }
 }
