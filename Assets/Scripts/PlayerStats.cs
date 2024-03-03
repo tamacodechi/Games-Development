@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int pickupsCollected = 0;
     [SerializeField] float playerSpeedMultiplier = 1f;
     [SerializeField] float playerScoreMultiplier = 1f;
+    [SerializeField] int speedLevel = 1;
+    [SerializeField] int scoreMultiplierLevel = 1;
 
     public static PlayerStats playerStatsInstance;
 
@@ -54,6 +56,20 @@ public class PlayerStats : MonoBehaviour
     }
     public void SetPickupsCollected(int newPickupsCollected) {
         pickupsCollected = newPickupsCollected;
+    }
+
+    public int GetSpeedLevel() {
+        return speedLevel;
+    }
+    public void SetSpeedLevel(int newSpeedLevel) {
+        speedLevel = newSpeedLevel;
+    }
+
+    public int GetScoreMultiplierLevel() {
+        return scoreMultiplierLevel;
+    }
+    public void SetScoreMultiplierLevel(int newScoreMultiplierLevel) {
+        scoreMultiplierLevel = newScoreMultiplierLevel;
     }
 
     void Awake()

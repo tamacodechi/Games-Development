@@ -39,9 +39,9 @@ public class UpgradeShop : MonoBehaviour
 
             playerStats.SetPlayerSpeedMultiplier(currentPlayerSpeed + 0.5f);
 
-            speedUpgradeLevel++;
+            playerStats.SetSpeedLevel(playerStats.GetSpeedLevel() + 1);
 
-            speedUpgradeLevelText.text = "Lv" + speedUpgradeLevel.ToString();
+            speedUpgradeLevelText.text = "Lv" + playerStats.GetSpeedLevel().ToString();
         }
     }
 
@@ -51,9 +51,9 @@ public class UpgradeShop : MonoBehaviour
 
             playerStats.SetPlayerScoreMultiplier(currentScoreMultiplier + 1f);
 
-            scoreMultiplierUpgradeLevel++;
+            playerStats.SetScoreMultiplierLevel(playerStats.GetScoreMultiplierLevel() + 1);
 
-            scoreMultiplierLevelText.text = "Lv" + scoreMultiplierUpgradeLevel.ToString();
+            scoreMultiplierLevelText.text = "Lv" + playerStats.GetScoreMultiplierLevel().ToString();
         }
     }
 
@@ -77,8 +77,8 @@ public class UpgradeShop : MonoBehaviour
     {
         playerStats = PlayerStats.playerStatsInstance;
 
-        speedUpgradeLevelText.text = "Lv" + playerStats.GetPlayerSpeedMultiplier().ToString();
-        scoreMultiplierLevelText.text = "Lv" + playerStats.GetPlayerScoreMultiplier().ToString();
+        speedUpgradeLevelText.text = "Lv" + playerStats.GetSpeedLevel().ToString();
+        scoreMultiplierLevelText.text = "Lv" + playerStats.GetScoreMultiplierLevel().ToString();
 
         speedUpgradeCostText.text = "COST: " + speedUpgradeCost.ToString();
         scoreMultiplierCostText.text = "COST: " + scoreMultiplierUpgradeCost.ToString();
