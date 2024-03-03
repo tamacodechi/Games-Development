@@ -48,6 +48,14 @@ public class PlayerStats : MonoBehaviour
         return playerScoreMultiplier;
     }
 
+    public int GetPlayerPickupsCollected()
+    {
+        return pickupsCollected;
+    }
+    public void SetPickupsCollected(int newPickupsCollected) {
+        pickupsCollected = newPickupsCollected;
+    }
+
     void Awake()
     {
         if(playerStatsInstance == null)
