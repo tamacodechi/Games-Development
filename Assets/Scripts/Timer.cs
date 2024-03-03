@@ -48,5 +48,10 @@ public class Timer : MonoBehaviour
         return timeRemaining;
     }
 
+    public bool GetTimerRunningState()
+    {
+        return timerIsRunning;
+    }
+
     
 }
