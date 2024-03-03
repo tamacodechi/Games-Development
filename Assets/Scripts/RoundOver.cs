@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class RoundOver : MonoBehaviour
 {
+    [SerializeField] GameObject pauseMenuUI;
+    [SerializeField] GameObject roundOverUI;
     PauseMenu pauseMenuScript;
-    
+
     public Timer timer;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        pauseMenuScript = FindObjectOfType<PauseMenu>();
     }
 
     // Update is called once per frame
@@ -27,19 +29,14 @@ public class RoundOver : MonoBehaviour
     }
 
 
-    void EndRound() 
+    void EndRound()
     {
-		GameObject pauseMenuObject = GameObject.Find("Pause Menu");
-
-		pauseMenuScript = pauseMenuObject.GetComponent<PauseMenu> ();
         pauseMenuScript.canPause = false;
         Time.timeScale = 0;
-
-        GameObject roundOverUIObject = GameObject.Find("Round Over").transform.Find( "Round Over UI" ).gameObject;
-        roundOverUIObject.gameObject.SetActive(true);
+        roundOverUI.SetActive(true);
     }
 
-    public void PlayNextRound() 
+    public void PlayNextRound()
     {
         SceneManager.LoadScene("allWorld");
     }
