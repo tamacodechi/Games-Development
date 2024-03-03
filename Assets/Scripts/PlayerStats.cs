@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float playerSpeedMultiplier = 1f;
     [SerializeField] float playerScoreMultiplier = 1f;
 
+    public static PlayerStats playerStatsInstance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class PlayerStats : MonoBehaviour
     {
         return playerSpeedMultiplier;
     }
-    
+
     public void SetPlayerScoreMultiplier(float newScoreMultiplier)
     {
         playerScoreMultiplier = newScoreMultiplier;
@@ -44,5 +46,17 @@ public class PlayerStats : MonoBehaviour
     public float GetPlayerScoreMultiplier()
     {
         return playerScoreMultiplier;
+    }
+
+    void Awake()
+    {
+        if(playerStatsInstance == null)
+        {
+            playerStatsInstance = this;
+            DontDestroyOnLoad(this.gameObject);
+            return;
+        }
+
+        Destroy(this.gameObject);
     }
 }
