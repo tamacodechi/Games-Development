@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.UI;
 
 /* Adding skeleton for GameSessionManager to test score increase
- */ 
+ */
 
 public class GameSessionManager : MonoBehaviour
 {
     public static GameSessionManager gameSession { get; private set; }
 
-    [SerializeField] TextMeshProUGUI roundTimerText;
-    [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI pickupsCollectedText;
+    [SerializeField] Text roundTimerText;
+    [SerializeField] Text scoreText;
+    [SerializeField] Text pickupsCollectedText;
 
     PlayerStats playerStats;
 
@@ -31,16 +31,16 @@ public class GameSessionManager : MonoBehaviour
 
     public void SetScoreText(string newScoreText)
     {
-        scoreText.text = ("Score: " + newScoreText);
+        scoreText.text = newScoreText;
     }
 
     public void SetPickupsCollectedText(string newPickupsCollectedText)
     {
-        pickupsCollectedText.text = ("Pickups Collected: " + newPickupsCollectedText);
+        pickupsCollectedText.text = newPickupsCollectedText;
     }
 
     public void SetTimerText(string newTimerText)
     {
-        roundTimerText.text = ("Time Remaining: " + newTimerText);
+        roundTimerText.text = newTimerText;
     }
 }
