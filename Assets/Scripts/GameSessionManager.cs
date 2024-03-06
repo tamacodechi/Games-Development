@@ -19,6 +19,13 @@ public class GameSessionManager : MonoBehaviour
 
     private void Awake()
     {
+        if (PlayerPrefs.GetInt ("HasPlayedTutorial") == 0) {
+            // Render tutorial...
+
+            // Set 'HasPlayedTutorial' to '1' so it doesn't appear again
+            PlayerPrefs.SetInt("HasPlayedTutorial", 1);
+         }
+
         if (gameSession != null && gameSession != this)
         {
             Destroy(this);
