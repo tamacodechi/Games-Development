@@ -14,18 +14,12 @@ public class GameSessionManager : MonoBehaviour
     [SerializeField] Text roundTimerText;
     [SerializeField] Text scoreText;
     [SerializeField] Text pickupsCollectedText;
+    [SerializeField] GameObject tutorialObject;
 
     PlayerStats playerStats;
 
     private void Awake()
     {
-        if (PlayerPrefs.GetInt ("HasPlayedTutorial") == 0) {
-            // Render tutorial...
-
-            // Set 'HasPlayedTutorial' to '1' so it doesn't appear again
-            PlayerPrefs.SetInt("HasPlayedTutorial", 1);
-         }
-
         if (gameSession != null && gameSession != this)
         {
             Destroy(this);
@@ -33,6 +27,11 @@ public class GameSessionManager : MonoBehaviour
         else
         {
             gameSession = this;
+
+            if (PlayerPrefs.GetInt ("HasPlayedTutorial") == 0) {
+                tutorialObject.SetActive(true);
+                PlayerPrefs.SetInt("HasPlayedTutorial", 1);
+            }
         }
     }
 
