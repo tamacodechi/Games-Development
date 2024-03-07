@@ -14,6 +14,7 @@ public class GameSessionManager : MonoBehaviour
     [SerializeField] Text roundTimerText;
     [SerializeField] Text scoreText;
     [SerializeField] Text pickupsCollectedText;
+    [SerializeField] GameObject tutorialObject;
 
     PlayerStats playerStats;
 
@@ -26,6 +27,11 @@ public class GameSessionManager : MonoBehaviour
         else
         {
             gameSession = this;
+
+            if (PlayerPrefs.GetInt ("HasPlayedTutorial") == 0) {
+                tutorialObject.SetActive(true);
+                PlayerPrefs.SetInt("HasPlayedTutorial", 1);
+            }
         }
     }
 

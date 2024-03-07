@@ -12,6 +12,10 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+
+        if(PlayerPrefs.GetInt("HasPlayedTutorial") == 1) return;
+
+        PlayerPrefs.SetInt("HasPlayedTutorial", 0);
     }
 
     // Update is called once per frame
