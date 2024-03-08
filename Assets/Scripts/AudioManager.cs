@@ -6,8 +6,8 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    public Sound[] musicSounds, sfxSounds, idleMotorSounds;
-    public AudioSource musicSource, sfxSource, idleMotorSource;
+    public Sound[] musicSounds, sfxSounds, idleMotorSounds,crashSound;
+    public AudioSource musicSource, sfxSource, idleMotorSource, crashSoundSource;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-
+    // Idling Sound 
     private void StartIdleMotorSound()
     {
         Sound idleMotorSound = Array.Find(idleMotorSounds, sound => sound.name == "IdleMotor");
@@ -108,5 +108,22 @@ public class AudioManager : MonoBehaviour
             sfxSource.Stop();
         }
     }
+
+
+
+    public void PlayBumpSound()
+    {
+        Sound s = Array.Find(crashSound, sound => sound.name == "Bump");
+        if (s == null)
+        {
+            Debug.LogWarning("Bump sound not found.");
+            return;
+        }
+
+        crashSoundSource.PlayOneShot(s.clip); 
+    }
+
+
+
 
 }

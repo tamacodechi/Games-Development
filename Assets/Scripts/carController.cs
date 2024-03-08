@@ -15,6 +15,10 @@ public class carController : MonoBehaviour
     [SerializeField] Transform rearLeftWheelTransform;
     [SerializeField] Transform rearRightWheelTransform;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip bumpSound;
+
+
     private float horizontalInput;
     private float verticalInput;
     private float currentSteerAngle;
@@ -139,5 +143,17 @@ public class carController : MonoBehaviour
             Quaternion.LookRotation(gameObject.transform.forward),
             Time.deltaTime * rotationDamping
             );
+    }
+
+
+    // Playing a Bump sound in collider 
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Check if the collision is strong enough (optional, you can define a minimum force)
+        if (collision.relativeVelocity.magnitude > 2)
+        {
+            // Play the bump sound
+            audioSource.PlayOneShot(bumpSound);
+        }
     }
 }
