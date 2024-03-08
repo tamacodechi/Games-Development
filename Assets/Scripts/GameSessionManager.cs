@@ -31,6 +31,8 @@ public class GameSessionManager : MonoBehaviour
             if (PlayerPrefs.GetInt ("HasPlayedTutorial") == 0) {
                 tutorialObject.SetActive(true);
                 PlayerPrefs.SetInt("HasPlayedTutorial", 1);
+            } else {
+                Time.timeScale = 1;
             }
         }
     }
