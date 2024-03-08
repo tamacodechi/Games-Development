@@ -6,8 +6,8 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    public Sound[] musicSounds, sfxSounds, idleMotorSounds,crashSound;
-    public AudioSource musicSource, sfxSource, idleMotorSource, crashSoundSource;
+    public Sound[] musicSounds, sfxSounds, idleMotorSounds,crashSound, reverseSound;
+    public AudioSource musicSource, sfxSource, idleMotorSource, crashSoundSource, reverseSoundSource;
 
     private void Awake()
     {
@@ -32,18 +32,27 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        // Check if the "up" arrow key or the "down" arrow key is pressed down
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+        // Engine sound logic for moving forward
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             StartEngineSound();
         }
-
-        // Check if the "up" arrow key or the "down" arrow key is released
-        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             StopEngineSound();
         }
+
+        // Reverse sound logic for moving backward
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            StartReverseSound(); // Play the reverse sound when the down arrow key is pressed
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            StopReverseSound(); // Stop the reverse sound when the down arrow key is released
+        }
     }
+
 
 
     public void PlayMusic(string name)
@@ -110,7 +119,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-
+    // Sound when the car hits 
     public void PlayBumpSound()
     {
         Sound s = Array.Find(crashSound, sound => sound.name == "Bump");
@@ -123,6 +132,32 @@ public class AudioManager : MonoBehaviour
         crashSoundSource.PlayOneShot(s.clip); 
     }
 
+    // Starts playing the reverse sound
+    public void StartReverseSound()
+    {
+        Sound s = Array.Find(reverseSound, sound => sound.name == "Reverse"); 
+        if (s == null)
+        {
+            Debug.LogWarning("Reverse sound not found.");
+            return;
+        }
+
+        if (!reverseSoundSource.isPlaying)
+        {
+            reverseSoundSource.clip = s.clip;
+            reverseSoundSource.loop = true; 
+            reverseSoundSource.Play();
+        }
+    }
+
+    // Stops playing the reverse sound
+    public void StopReverseSound()
+    {
+        if (reverseSoundSource.isPlaying)
+        {
+            reverseSoundSource.Stop();
+        }
+    }
 
 
 
