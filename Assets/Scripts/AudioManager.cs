@@ -6,8 +6,10 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    public Sound[] musicSounds, sfxSounds, idleMotorSounds,crashSound, reverseSound;
-    public AudioSource musicSource, sfxSource, idleMotorSource, crashSoundSource, reverseSoundSource;
+    public Sound[] musicSounds, sfxSounds, idleMotorSounds,crashSound, reverseSound, lightMusicSound;
+    public AudioSource musicSource, sfxSource, idleMotorSource, crashSoundSource, reverseSoundSource, lightMusicSource;
+   
+
 
     private void Awake()
     {
@@ -25,6 +27,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayMusic("BackgroundCity");
+        PlayLightBackgroundMusic("LightBackgroundMusic"); 
+
         StartIdleMotorSound(); 
 
 
@@ -55,6 +59,7 @@ public class AudioManager : MonoBehaviour
 
 
 
+    // Playing City Background Music 
     public void PlayMusic(string name)
     {
         Sound s = Array.Find(musicSounds, sound => sound.name == name);
@@ -67,6 +72,23 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = s.clip;
         musicSource.Play();
     }
+
+
+    // Adding Ligh Background Sound
+    public void PlayLightBackgroundMusic(string name)
+    {
+        Sound s = Array.Find(lightMusicSound, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Music sound not found: " + name);
+            return;
+        }
+
+        lightMusicSource.clip = s.clip;
+        lightMusicSource.loop = true; 
+        lightMusicSource.Play();
+    }
+
 
 
     // Idling Sound 
@@ -100,7 +122,7 @@ public class AudioManager : MonoBehaviour
         if (!sfxSource.isPlaying)
         {
             sfxSource.clip = s.clip;
-            sfxSource.loop = true; // Loop the sound so it continues playing
+            sfxSource.loop = true; // Looping here  the sound so it continues playing
             sfxSource.Play();
         }
     }
@@ -132,7 +154,7 @@ public class AudioManager : MonoBehaviour
         crashSoundSource.PlayOneShot(s.clip); 
     }
 
-    // Starts playing the reverse sound
+    // Starting playing the reverse sound
     public void StartReverseSound()
     {
         Sound s = Array.Find(reverseSound, sound => sound.name == "Reverse"); 
