@@ -7,6 +7,11 @@ public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider;
     [SerializeField] Toggle fullscreenToggle;
+    [SerializeField] Dropdown resolutionsDropdown;
+
+    private List<Resolution> filteredResolutions;
+    private int resolutionDropdownIndex;
+
     bool runOnce = false;
 
     // Start is called before the first frame update
@@ -24,9 +29,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            bool isFullScreen = Screen.fullScreenMode != FullScreenMode.Windowed;
-
-            Screen.fullScreen = isFullScreen;
+            Screen.fullScreen = Screen.fullScreenMode != FullScreenMode.Windowed;
         }
     }
 
@@ -40,6 +43,9 @@ public class SettingsMenu : MonoBehaviour
             volumeSlider.value = volume;
 
             fullscreenToggle.isOn = Screen.fullScreenMode != FullScreenMode.Windowed;
+
+            PopulateResolutions();
+            resolutionsDropdown.value = resolutionDropdownIndex;
 
             runOnce = true;
         }
@@ -68,5 +74,47 @@ public class SettingsMenu : MonoBehaviour
         {
             PlayerPrefs.SetInt("fullscreen", 1);
         }
+    }
+
+
+    public void SetResolution()
+    {
+        Resolution resolution = filteredResolutions[resolutionsDropdown.value];
+
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    void PopulateResolutions()
+    {
+        Resolution[] resolutions = Screen.resolutions;
+        filteredResolutions = new List<Resolution>();
+
+        foreach(Resolution resolution in resolutions)
+        {
+            // There is a refreshRate mismatch when using a game build (ie: 60Hz -> 59Hz), so we reduce it by 1 in these cases
+            // We also only wanna add resolutions that match the user's screen refresh rate to avoid duplicate entries
+            float screenRefreshRate = Screen.currentResolution.refreshRate;
+
+            if(resolution.refreshRate == (Application.isEditor ? screenRefreshRate : screenRefreshRate - 1))
+            {
+                filteredResolutions.Add(resolution);
+            }
+        }
+
+        List<string> formattedResolutions = new List<string>();
+        foreach(Resolution filteredResolution in filteredResolutions)
+        {
+            // Format user-readable resolution and add it to the formattedResolutions list
+            string resolutionOption = filteredResolution.width + "x" + filteredResolution.height;
+            formattedResolutions.Add(resolutionOption);
+
+            // If the resolution matches the user's screen, we save it so we can update the dropdown's starting value
+            if(filteredResolution.width == Screen.width && filteredResolution.height == Screen.height)
+            {
+                resolutionDropdownIndex = filteredResolutions.IndexOf(filteredResolution);
+            }
+        }
+
+        resolutionsDropdown.AddOptions(formattedResolutions);
     }
 }
