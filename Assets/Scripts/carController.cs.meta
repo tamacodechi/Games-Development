@@ -3,7 +3,18 @@ guid: 6746967528b868f49a7ef4b38836e2c7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - frontLeftWheelCollider: {instanceID: 0}
+  - frontRightWheelCollider: {instanceID: 0}
+  - rearLeftWheelCollider: {instanceID: 0}
+  - rearRightWheelCollider: {instanceID: 0}
+  - frontLeftWheelTransform: {instanceID: 0}
+  - frontRightWheelTransform: {instanceID: 0}
+  - rearLeftWheelTransform: {instanceID: 0}
+  - rearRightWheelTransform: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - bumpSound: {instanceID: 0}
+  - playerStats: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
