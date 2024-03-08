@@ -8,6 +8,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] Slider volumeSlider;
     [SerializeField] Toggle fullscreenToggle;
     [SerializeField] Dropdown resolutionsDropdown;
+    [SerializeField] Dropdown graphicQualityDropdown;
 
     private List<Resolution> filteredResolutions;
     private int resolutionDropdownIndex;
@@ -31,6 +32,11 @@ public class SettingsMenu : MonoBehaviour
         {
             Screen.fullScreen = Screen.fullScreenMode != FullScreenMode.Windowed;
         }
+
+        if(!PlayerPrefs.HasKey("graphicQuality"))
+        {
+            PlayerPrefs.SetInt("graphicQuality", 4);
+        }
     }
 
     // Update is called once per frame
@@ -46,6 +52,9 @@ public class SettingsMenu : MonoBehaviour
 
             PopulateResolutions();
             resolutionsDropdown.value = resolutionDropdownIndex;
+
+            int graphicQuality = PlayerPrefs.GetInt("graphicQuality");
+            graphicQualityDropdown.value = graphicQuality;
 
             runOnce = true;
         }
@@ -76,6 +85,12 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
+    public void SetGraphicQuality()
+    {
+        QualitySettings.SetQualityLevel(graphicQualityDropdown.value, true);
+
+        PlayerPrefs.SetInt("graphicQuality", graphicQualityDropdown.value);
+    }
 
     public void SetResolution()
     {

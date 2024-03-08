@@ -494,15 +494,32 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
+    - m_Text: Very Low
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: Low
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: Medium
+      m_Image: {fileID: 0}
+    - m_Text: High
+      m_Image: {fileID: 0}
+    - m_Text: Very High
+      m_Image: {fileID: 0}
+    - m_Text: Ultra
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1402625077567121228}
+        m_MethodName: SetGraphicQuality
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &2423697655862447317
 GameObject:
@@ -1273,6 +1290,7 @@ MonoBehaviour:
   volumeSlider: {fileID: 5347271918012912225}
   fullscreenToggle: {fileID: 86912309371015737}
   resolutionsDropdown: {fileID: 6907966011708051974}
+  graphicQualityDropdown: {fileID: 5300482937569346483}
 --- !u!1 &3927344677343065881
 GameObject:
   m_ObjectHideFlags: 0
