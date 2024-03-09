@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - Pickup_Spawn_Point
+  - Park Entry
   layers:
   - Default
   - TransparentFX

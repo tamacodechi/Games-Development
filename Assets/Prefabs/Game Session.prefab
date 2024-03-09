@@ -275,11 +275,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8147199889185353755}
+  - {fileID: 1118494728244954903}
   - {fileID: 1928928279272884008}
   - {fileID: 1682075101918284813}
-  - {fileID: 3312159194070641362}
-  - {fileID: 1118494728244954903}
   - {fileID: 6087713792846347499}
+  - {fileID: 3312159194070641362}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -694,8 +694,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6210454870251669165, guid: 1e75c08fe89c12b4d9fc99a0f94aa0e1,
-          type: 3}
+      - m_Target: {fileID: 9146576189350299210}
         m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
@@ -819,7 +818,7 @@ RectTransform:
   - {fileID: 1928928277924509713}
   - {fileID: 1928928279801128329}
   m_Father: {fileID: 1118494729369821603}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -845,7 +844,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1928928279272884010
 MonoBehaviour:
@@ -1083,8 +1082,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6210454870251669165, guid: 1e75c08fe89c12b4d9fc99a0f94aa0e1,
-          type: 3}
+      - m_Target: {fileID: 9146576189350299210}
         m_MethodName: ExitToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -1358,7 +1356,7 @@ RectTransform:
   - {fileID: 1003333267952273593}
   - {fileID: 3767579602126417039}
   m_Father: {fileID: 1118494729369821603}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1941,7 +1939,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score
+  m_Text: 0
 --- !u!1 &4428323294007148711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,7 +2054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34, y: -6.25}
+  m_AnchoredPosition: {x: 39.80005, y: -12.728638}
   m_SizeDelta: {x: 85, y: 25}
   m_Pivot: {x: 0.4, y: 0.75}
 --- !u!222 &136221381399517179
@@ -2126,7 +2124,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1118494729369821603}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8277941157696637630
 MonoBehaviour:
@@ -2520,7 +2518,7 @@ RectTransform:
   m_Children:
   - {fileID: 8462708007769263444}
   m_Father: {fileID: 1118494729369821603}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2600,9 +2598,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedUpgradeLevel: 1
-  speedUpgradeCost: 10
+  speedUpgradeCost: 2
   scoreMultiplierUpgradeLevel: 1
-  scoreMultiplierUpgradeCost: 25
+  scoreMultiplierUpgradeCost: 1
   speedUpgradeLevelText: {fileID: 9104383270038720156}
   speedUpgradeCostText: {fileID: 3154473850030429163}
   scoreMultiplierLevelText: {fileID: 2121956135628257629}
@@ -2718,7 +2716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
+  m_AnchoredPosition: {x: -2.3000488, y: -14.299988}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.8}
 --- !u!222 &4347802073315914257
@@ -2835,7 +2833,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collectibles
+  m_Text: 0
 --- !u!1 &7284199945711386073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,7 +2872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 3.1099854}
   m_SizeDelta: {x: 538, y: 314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5826537164669439577
@@ -3028,7 +3026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 10}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8147199888742840296
@@ -3122,6 +3120,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 8147199889185353751}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8147199888868521194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,7 +3165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 40}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 640, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8147199888868521193
@@ -3417,7 +3426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8147199889192346646
@@ -3500,8 +3509,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6210454870251669165, guid: 1e75c08fe89c12b4d9fc99a0f94aa0e1,
-          type: 3}
+      - m_Target: {fileID: 9146576189350299210}
         m_MethodName: ExitToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -3626,7 +3634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8147199889331430214
@@ -3709,8 +3717,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4751403774783037135, guid: b1d6dc5941c370a4cb73b9d6e870548a,
-          type: 3}
+      - m_Target: {fileID: 2340094524481577715}
         m_MethodName: PlayNextRound
         m_Mode: 1
         m_Arguments:
@@ -3833,7 +3840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.0943909, y: -3.309723}
+  m_AnchoredPosition: {x: 1.0943604, y: -3.309723}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8441183006684896480
@@ -3972,7 +3979,7 @@ PrefabInstance:
     - target: {fileID: 3663782758108094922, guid: 7e06ff838e019cc4fbc42b85f06acf82,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3663782758108094922, guid: 7e06ff838e019cc4fbc42b85f06acf82,
         type: 3}
@@ -4026,12 +4033,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e06ff838e019cc4fbc42b85f06acf82, type: 3}
---- !u!4 &1118494728244954903 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3663782758108094922, guid: 7e06ff838e019cc4fbc42b85f06acf82,
-    type: 3}
-  m_PrefabInstance: {fileID: 4421952119876871901}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1118494728244954900 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3663782758108094921, guid: 7e06ff838e019cc4fbc42b85f06acf82,
@@ -4044,3 +4045,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a89ba8798d9c403f904f36830715f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1118494728244954903 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3663782758108094922, guid: 7e06ff838e019cc4fbc42b85f06acf82,
+    type: 3}
+  m_PrefabInstance: {fileID: 4421952119876871901}
+  m_PrefabAsset: {fileID: 0}
