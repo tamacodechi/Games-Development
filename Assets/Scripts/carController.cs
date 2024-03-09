@@ -43,6 +43,8 @@ public class carController : MonoBehaviour
     [SerializeField] private float maxSteerAngle;
 
     public PlayerStats playerStats;
+    public Rigidbody playerRB;
+    public Vector3 centerOfMass;
 
     private void Start()
     {
@@ -51,6 +53,8 @@ public class carController : MonoBehaviour
         frontRightWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
         rearLeftWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
         rearRightWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
+        playerRB = GetComponent<Rigidbody>();
+        playerRB.centerOfMass = centerOfMass;
     }
 
     private void FixedUpdate()
@@ -76,12 +80,12 @@ public class carController : MonoBehaviour
 
         frontLeftWheelCollider.motorTorque = torqueToApply;
         frontRightWheelCollider.motorTorque = torqueToApply;
-/*        rearLeftWheelCollider.motorTorque = torqueToApply;
-        rearRightWheelCollider.motorTorque = torqueToApply;*/
+        /*        rearLeftWheelCollider.motorTorque = torqueToApply;
+                rearRightWheelCollider.motorTorque = torqueToApply;*/
         Debug.Log(torqueToApply);
 
         ApplyBraking();
-        
+
     }
 
     private void ApplyBraking()
@@ -119,11 +123,11 @@ public class carController : MonoBehaviour
         wheelTransform.rotation = rotation;
         wheelTransform.position = position;
 
-        if(horizontalInput <= Mathf.Epsilon)
+        if (horizontalInput <= Mathf.Epsilon)
         {
             wheelCollider.wheelDampingRate = 15f;
         }
-        if(verticalInput <= Mathf.Epsilon)
+        if (verticalInput <= Mathf.Epsilon)
         {
             wheelCollider.wheelDampingRate = 15f;
         }
@@ -135,7 +139,7 @@ public class carController : MonoBehaviour
     //Thought Process:
     //- Update the rotation for the 
     private void UpdateRotation()
-    {        
+    {
         Quaternion newRotation = gameObject.transform.localRotation;
         newRotation.z = 0;
         transform.rotation = Quaternion.Lerp(
@@ -155,5 +159,18 @@ public class carController : MonoBehaviour
             // Play the bump sound
             audioSource.PlayOneShot(bumpSound);
         }
+    }
+
+    public void setMotorForce(float newMotorForce)
+    {
+        motorForce = newMotorForce;
+    }
+    public void setBrakeForce(float newBrakeForce)
+    {
+        brakeForce = newBrakeForce;
+    }
+    public void setSteeringAngle(float newSteeringAngle)
+    {
+        maxSteerAngle = newSteeringAngle;
     }
 }
