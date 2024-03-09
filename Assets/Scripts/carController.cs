@@ -134,10 +134,6 @@ public class carController : MonoBehaviour
 
     }
 
-
-    //Current rotation, normalize the Z, then lerp
-    //Thought Process:
-    //- Update the rotation for the 
     private void UpdateRotation()
     {
         Quaternion newRotation = gameObject.transform.localRotation;
