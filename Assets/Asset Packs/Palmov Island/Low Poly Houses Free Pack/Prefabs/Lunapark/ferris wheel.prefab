@@ -849,6 +849,7 @@ GameObject:
   - component: {fileID: 6430826018083658036}
   - component: {fileID: 9140642002837679614}
   - component: {fileID: 871872208041545241}
+  - component: {fileID: 2211713821044158317}
   m_Layer: 0
   m_Name: ferris wheel
   m_TagString: Untagged
@@ -929,8 +930,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 19.315468, y: 16.710012, z: 8.373696}
-  m_Center: {x: -0.0000009536743, y: 8.355004, z: 0}
+  m_Size: {x: 3.4354696, y: 3.4562979, z: 8.373696}
+  m_Center: {x: 7.939999, y: 1.728147, z: 0}
+--- !u!65 &2211713821044158317
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339434766955449387}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4354696, y: 3.4562979, z: 8.373696}
+  m_Center: {x: -7.939999, y: 1.728147, z: 0}
 --- !u!1 &8218225977498706381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1050,7 @@ GameObject:
   - component: {fileID: 3457828485126499065}
   - component: {fileID: 7504094006794885907}
   - component: {fileID: 1880501516049638338}
+  - component: {fileID: 6532770281754019783}
   m_Layer: 0
   m_Name: rotation wheel
   m_TagString: Untagged
@@ -1125,5 +1140,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 23.658068, y: 22.500164, z: 6.488055}
-  m_Center: {x: 0, y: -0.0000014305115, z: 0}
+  m_Size: {x: 23.658068, y: 11.178965, z: 6.488055}
+  m_Center: {x: 0, y: 1.1664286, z: 0}
+--- !u!65 &6532770281754019783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224953927900450762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.17896, y: 21.783712, z: 6.488055}
+  m_Center: {x: 0, y: 0.22925091, z: 0}
