@@ -105,8 +105,8 @@ public class carController : MonoBehaviour
         currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
-        /*rearLeftWheelCollider.steerAngle = -currentSteerAngle;
-        rearRightWheelCollider.steerAngle = -currentSteerAngle;*/
+        rearLeftWheelCollider.steerAngle = -currentSteerAngle;
+        rearRightWheelCollider.steerAngle = -currentSteerAngle;
     }
 
     private void UpdateWheels()
