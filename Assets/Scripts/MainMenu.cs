@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     bool runOnce;
-
+    public AudioManager AudioManager;
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager = FindObjectOfType<AudioManager>();
         Time.timeScale = 1;
 
         if(PlayerPrefs.GetInt("HasPlayedTutorial") == 1) return;
@@ -38,6 +39,10 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame() {
         SceneManager.LoadScene("allWorld");
+        AudioManager.loadAudioClips();
+        AudioManager.StartIdleMotorSound();
+        AudioManager.PlayMusic("BackgroundCity");
+
     }
 
     public void ExitGame() {
