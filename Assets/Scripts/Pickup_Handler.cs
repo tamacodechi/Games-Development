@@ -37,26 +37,7 @@ public class Pickup_Handler : MonoBehaviour
                 playerStats.AddToScore(scoreValue);
                 playerStats.AddToPickupsCollected();
             }
-            //Works - sound origination is from spawn        
-            parentAudioSource.Play(0);
-
-            //Works - sound origination is from camera
-            //AudioSource.PlayClipAtPoint(pickupAudioSource.clip, Camera.main.transform.position);
-
-            //Works - Sound orignation is from pickup
-            //playPickupSound();
-
-            //pickupAudioSource.Play(0);
-            //pickupAudioSource.PlayOneShot(pickupAudioSource.clip, 1f);
-
-
-
-            
+            AudioManager.Instance.PlayPickupSound();
         }
-    }
-
-    public void playPickupSound()
-    {
-        pickupAudioSource.PlayOneShot(pickupSound, 1f);
     }
 }

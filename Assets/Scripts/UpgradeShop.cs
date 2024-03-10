@@ -37,7 +37,7 @@ public class UpgradeShop : MonoBehaviour
         if (AttemptUpgrade(speedUpgradeCost)) {
             float currentPlayerSpeed = playerStats.GetPlayerSpeedMultiplier();
 
-            playerStats.SetPlayerSpeedMultiplier(currentPlayerSpeed + 0.5f);
+            playerStats.SetPlayerSpeedMultiplier(currentPlayerSpeed + 0.2f);
 
             playerStats.SetSpeedLevel(playerStats.GetSpeedLevel() + 1);
 

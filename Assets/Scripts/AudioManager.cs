@@ -6,8 +6,8 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    public Sound[] musicSounds, sfxSounds, idleMotorSounds,crashSounds, reverseSound, lightMusicSound, brakingSound;
-    public AudioSource musicSource, sfxSource, idleMotorSource, crashSoundSource, reverseSoundSource, lightMusicSource, brakingSoundSource;
+    public Sound[] musicSounds, sfxSounds, idleMotorSounds,crashSounds, reverseSound, lightMusicSound, brakingSound, pickupSound;
+    public AudioSource musicSource, sfxSource, idleMotorSource, crashSoundSource, reverseSoundSource, lightMusicSource, brakingSoundSource, pickupSoundSource;
    
 
 
@@ -43,6 +43,19 @@ public class AudioManager : MonoBehaviour
         LoadSFXSound("Engine");
         LoadIdleMotorSound();
         LoadBrakingSound("Braking");
+        LoadPickupSound("Pickup");
+    }
+
+    public void LoadPickupSound(string name)
+    {
+        Sound ps = Array.Find(pickupSound, sound => sound.name == "Pickup");
+        if (ps == null)
+        {
+            Debug.LogWarning("Pickup sound not found.");
+            return;
+
+        }
+        pickupSoundSource.clip = ps.clip;
     }
 
     public void LoadBackgroundNoise(string name)
@@ -101,6 +114,13 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void PlayPickupSound()
+    {
+        if (pickupSoundSource != null)
+        {
+            pickupSoundSource.Play();
+        }
+    }
 
     // Adding Ligh Background Sound
     public void PlayLightBackgroundMusic(string name)

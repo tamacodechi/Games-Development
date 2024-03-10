@@ -13,6 +13,17 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats playerStatsInstance;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        if (playerStatsInstance == null)
+        {
+            playerStatsInstance = this;
+            DontDestroyOnLoad(this.gameObject);
+            return;
+        }
+
+        Destroy(this.gameObject);
+    }
     void Start()
     {
         GameSessionManager.gameSession.SetScoreText(score.ToString());
@@ -72,15 +83,5 @@ public class PlayerStats : MonoBehaviour
         scoreMultiplierLevel = newScoreMultiplierLevel;
     }
 
-    void Awake()
-    {
-        if(playerStatsInstance == null)
-        {
-            playerStatsInstance = this;
-            DontDestroyOnLoad(this.gameObject);
-            return;
-        }
 
-        Destroy(this.gameObject);
-    }
 }

@@ -15,26 +15,42 @@ public class GameSessionManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text pickupsCollectedText;
     [SerializeField] GameObject tutorialObject;
+    [SerializeField] GameObject playerUI;
+    [SerializeField] GameObject roundOverUI;
+    [SerializeField] GameObject pauseMenuUI;
 
-    PlayerStats playerStats;
+    public static GameSessionManager gameSessionManagerInstance;
+    public Timer timer;
 
-    private void Awake()
+    // Start is called before the first frame update
+    void Awake()
     {
-        if (gameSession != null && gameSession != this)
+        if (gameSessionManagerInstance == null)
         {
-            Destroy(this);
+            gameSessionManagerInstance = this;
+            DontDestroyOnLoad(this.gameObject);
+
+            gameSession = this;
+        } else
+        {
+            Destroy(this.gameObject);
+        }
+
+        
+    }
+
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("HasPlayedTutorial") == 0)
+        {
+            tutorialObject.SetActive(true);
+            PlayerPrefs.SetInt("HasPlayedTutorial", 1);
         }
         else
         {
-            gameSession = this;
-
-            if (PlayerPrefs.GetInt ("HasPlayedTutorial") == 0) {
-                tutorialObject.SetActive(true);
-                PlayerPrefs.SetInt("HasPlayedTutorial", 1);
-            } else {
-                Time.timeScale = 1;
-            }
+            Time.timeScale = 1;
         }
+        return;
     }
 
     public void SetScoreText(string newScoreText)
@@ -50,5 +66,33 @@ public class GameSessionManager : MonoBehaviour
     public void SetTimerText(string newTimerText)
     {
         roundTimerText.text = newTimerText;
+    }
+    public void TogglePlayerUIActive()
+    {
+        playerUI.SetActive(!playerUI.activeSelf);
+    }
+
+    public void ToggleRoundOverUIActive(bool desiredState)
+    {
+        roundOverUI.SetActive(desiredState);
+    }
+
+    public void initializeMenuGameState()
+    {
+        timer.setTimeRemaining();
+        timer.setTimerRunningState();
+        roundOverUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        playerUI.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void initializeRoundRestart()
+    {
+        timer.setTimeRemaining();
+        timer.setTimerRunningState();
+        roundOverUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1;
     }
 }

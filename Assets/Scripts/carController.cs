@@ -15,32 +15,14 @@ public class carController : MonoBehaviour
     [SerializeField] Transform rearLeftWheelTransform;
     [SerializeField] Transform rearRightWheelTransform;
 
-
     public AudioManager AudioManager;
-    /*    [SerializeField] private AudioSource audioSource;
-        [SerializeField] private AudioClip bumpSound;*/
-
-
-
-
+    
     private float horizontalInput;
     private float verticalInput;
     private float currentSteerAngle;
     private bool isBraking;
     private float currentBrakeForce;
     public float rotationDamping;
-
-    private float sidewaysESlip = 0.4f;
-    private float sidewaysEValue = 1.0f;
-    private float sidewaysASlip = 0.5f;
-    private float sidewaysAValue = 0.75f;
-    private float sidewaysStiffness = 1f;
-
-    private float forwardESlip = 0.4f;
-    private float forwardEValue = 1.0f;
-    private float forwardASlip = 0.5f;
-    private float forwardAValue = 0.75f;
-    private float forwardStiffness = 1f;
 
     [SerializeField] private float brakeForce;
     [SerializeField] private float motorForce;

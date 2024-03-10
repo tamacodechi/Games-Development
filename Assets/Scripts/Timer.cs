@@ -7,11 +7,12 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float timeRemaining = 120;
+    public float timeRemaining = 120;
     private bool timerIsRunning = true;    
 
     void Start()
     {
+        timeRemaining = 120;
         timerIsRunning = true;
     }
 
@@ -51,7 +52,14 @@ public class Timer : MonoBehaviour
     public bool GetTimerRunningState()
     {
         return timerIsRunning;
+    }    
+    public void setTimeRemaining()
+    {
+        timeRemaining = 120;
+        timerIsRunning = true;
     }
-
-    
+    public void setTimerRunningState()
+    {
+        timerIsRunning = true;
+    }
 }
