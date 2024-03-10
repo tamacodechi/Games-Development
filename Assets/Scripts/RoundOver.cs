@@ -15,6 +15,7 @@ public class RoundOver : MonoBehaviour
     void Start()
     {
         pauseMenuScript = FindObjectOfType<PauseMenu>();
+            
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class RoundOver : MonoBehaviour
 
     public void PlayNextRound()
     {
+        GameSessionManager.gameSessionManagerInstance.initializeRoundRestart();
         SceneManager.LoadScene("allWorld");
     }
 }

@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitToMainMenu()
     {
+        GameSessionManager.gameSessionManagerInstance.initializeMenuGameState();
         SceneManager.LoadScene("MainMenu");
     }
 

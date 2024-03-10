@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     bool runOnce;
     public AudioManager AudioManager;
+    /*public GameSessionManager AudioManager;*/
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,8 @@ public class MainMenu : MonoBehaviour
         AudioManager.loadAudioClips();
         AudioManager.StartIdleMotorSound();
         AudioManager.PlayMusic("BackgroundCity");
+        GameSessionManager.gameSessionManagerInstance.TogglePlayerUIActive();
+        GameSessionManager.gameSessionManagerInstance.timer.setTimeRemaining();
 
     }
 
