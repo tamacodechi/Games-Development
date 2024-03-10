@@ -45,4 +45,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = isPaused ? 0 : 1;
         pauseMenuUI.SetActive(false);
     }
+    public void SetCanPause(bool desiredState)
+    {
+        canPause = desiredState;
+    }
+
 }

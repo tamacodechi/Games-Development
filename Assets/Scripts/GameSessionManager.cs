@@ -18,6 +18,7 @@ public class GameSessionManager : MonoBehaviour
     [SerializeField] GameObject playerUI;
     [SerializeField] GameObject roundOverUI;
     [SerializeField] GameObject pauseMenuUI;
+    PauseMenu pauseMenuScript;
 
     public static GameSessionManager gameSessionManagerInstance;
     public Timer timer;
@@ -42,7 +43,7 @@ public class GameSessionManager : MonoBehaviour
 
     private void Start()
     {
-
+        pauseMenuScript = FindObjectOfType<PauseMenu>();
     }
 
     public void SetScoreText(string newScoreText)
@@ -75,6 +76,7 @@ public class GameSessionManager : MonoBehaviour
         timer.setTimerRunningState();
         roundOverUI.SetActive(false);
         pauseMenuUI.SetActive(false);
+        pauseMenuScript.SetCanPause(false);
         playerUI.SetActive(false);
         Time.timeScale = 1;
     }
@@ -85,6 +87,7 @@ public class GameSessionManager : MonoBehaviour
         timer.setTimerRunningState();
         roundOverUI.SetActive(false);
         pauseMenuUI.SetActive(false);
+        pauseMenuScript.SetCanPause(true);
         Time.timeScale = 1;
     }
 
