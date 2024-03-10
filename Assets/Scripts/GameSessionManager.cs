@@ -25,6 +25,7 @@ public class GameSessionManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        PlayerPrefs.SetInt("HasPlayedTutorial", 0);
         if (gameSessionManagerInstance == null)
         {
             gameSessionManagerInstance = this;
