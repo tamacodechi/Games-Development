@@ -21,8 +21,6 @@ public class RoundOver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*        GameObject timerObject = GameObject.Find("Timer");
-                timerObjectScript = timerObject.GetComponent<Timer> ();*/
         if (!timer.GetTimerRunningState())
         {
             EndRound();
