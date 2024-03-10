@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2747378529282697813}
-  - component: {fileID: 995181879366259764}
   - component: {fileID: 3380085982385877564}
   - component: {fileID: 2525210349386062200}
+  - component: {fileID: 6526408999076887278}
   m_Layer: 0
   m_Name: Cans_Pickup
   m_TagString: Pickup
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &995181879366259764
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145420204967328157}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &3380085982385877564
 AudioSource:
   m_ObjectHideFlags: 0
@@ -163,6 +150,20 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   scoreValue: 1000
   collectibleValue: 1
+--- !u!136 &6526408999076887278
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145420204967328157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &5252722162416898816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -230,7 +231,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64205517211238588, guid: 4f96f6be8b901eb4c80c229856393703, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f96f6be8b901eb4c80c229856393703, type: 3}
 --- !u!4 &5252722162416565714 stripped
 Transform:

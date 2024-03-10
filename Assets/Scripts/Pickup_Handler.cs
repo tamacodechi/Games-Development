@@ -30,6 +30,7 @@ public class Pickup_Handler : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Destroy(gameObject);
             spawnPoint?.toggleActive();
             if (playerStats != null)
             {
@@ -50,7 +51,7 @@ public class Pickup_Handler : MonoBehaviour
 
 
 
-            Destroy(gameObject);
+            
         }
     }
 
