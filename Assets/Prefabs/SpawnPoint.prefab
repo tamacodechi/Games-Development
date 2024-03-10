@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickup: {fileID: 2145420204967328157, guid: 84ce88faea9a06e4584f5fa98400ccb2, type: 3}
-  minTime: 55
-  maxTime: 60
+  minTime: 5
+  maxTime: 30
 --- !u!82 &-759703193595711735
 AudioSource:
   m_ObjectHideFlags: 0

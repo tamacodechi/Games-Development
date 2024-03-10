@@ -15,8 +15,12 @@ public class carController : MonoBehaviour
     [SerializeField] Transform rearLeftWheelTransform;
     [SerializeField] Transform rearRightWheelTransform;
 
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip bumpSound;
+
+    public AudioManager AudioManager;
+    /*    [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip bumpSound;*/
+
+
 
 
     private float horizontalInput;
@@ -55,6 +59,7 @@ public class carController : MonoBehaviour
         rearRightWheelCollider.ConfigureVehicleSubsteps(1f, 5, 5);
         playerRB = GetComponent<Rigidbody>();
         playerRB.centerOfMass = centerOfMass;
+        AudioManager = FindObjectOfType<AudioManager>();
     }
 
     private void FixedUpdate()
@@ -80,11 +85,9 @@ public class carController : MonoBehaviour
 
         frontLeftWheelCollider.motorTorque = torqueToApply;
         frontRightWheelCollider.motorTorque = torqueToApply;
-        /*        rearLeftWheelCollider.motorTorque = torqueToApply;
-                rearRightWheelCollider.motorTorque = torqueToApply;*/
-        Debug.Log(torqueToApply);
-
         ApplyBraking();
+        HandleMotorSound();
+        HandleBrakingSound();
 
     }
 
@@ -153,7 +156,7 @@ public class carController : MonoBehaviour
         if (collision.relativeVelocity.magnitude > 2)
         {
             // Play the bump sound
-            audioSource.PlayOneShot(bumpSound);
+            AudioManager.PlayBumpSound();
         }
     }
 
@@ -168,5 +171,35 @@ public class carController : MonoBehaviour
     public void setSteeringAngle(float newSteeringAngle)
     {
         maxSteerAngle = newSteeringAngle;
+    }
+
+    private void HandleMotorSound() 
+    { 
+        if (verticalInput < 0 && (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)))
+        {
+            AudioManager.StopEngineSound();
+            AudioManager.StartReverseSound(); // Play the reverse sound when the down arrow key is pressed
+        } 
+        else if (verticalInput > 0 && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+        {
+            AudioManager.StopReverseSound();
+            AudioManager.StartEngineSound();
+        }
+        else
+        {
+            AudioManager.StopEngineSound();
+            AudioManager.StopReverseSound();
+        }
+    }
+
+    private void HandleBrakingSound()
+    {
+        if(isBraking && (Input.GetKey(KeyCode.Space)))
+        {
+            AudioManager.StartBrakingSound();
+        } else
+        {
+            AudioManager.StopBrakingSound();
+        }
     }
 }
