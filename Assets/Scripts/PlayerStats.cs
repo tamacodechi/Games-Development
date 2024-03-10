@@ -9,20 +9,29 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float playerScoreMultiplier = 1f;
     [SerializeField] int speedLevel = 1;
     [SerializeField] int scoreMultiplierLevel = 1;
+    [SerializeField] bool isParkUnlocked = false;
 
     public static PlayerStats playerStatsInstance;
 
     // Start is called before the first frame update
     void Awake()
     {
-        if (playerStatsInstance == null)
+        if (playerStatsInstance != null && playerStatsInstance != this)
         {
-            playerStatsInstance = this;
-            DontDestroyOnLoad(this.gameObject);
+            Destroy(this.gameObject);
             return;
         }
 
-        Destroy(this.gameObject);
+        playerStatsInstance = this;
+        DontDestroyOnLoad(this.gameObject);
+        /*        if (playerStatsInstance == null)
+                {
+                    playerStatsInstance = this;
+                    DontDestroyOnLoad(this.gameObject);
+                    return;
+                }
+
+                Destroy(this.gameObject);*/
     }
     void Start()
     {
@@ -83,5 +92,13 @@ public class PlayerStats : MonoBehaviour
         scoreMultiplierLevel = newScoreMultiplierLevel;
     }
 
+    public bool IsParkUnlocked()
+    {
+        if (GetPlayerPickupsCollected() >= 20)
+        {
+            isParkUnlocked = true;
+        }
+        return isParkUnlocked;
+    }
 
 }

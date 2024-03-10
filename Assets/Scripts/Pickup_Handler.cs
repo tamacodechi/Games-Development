@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Approach adapted from https://docs.unity3d.com/410/Documentation/ScriptReference/index.Accessing_Other_Game_Objects.html */
 public class Pickup_Handler : MonoBehaviour
 {
     public AudioClip pickupSound;
     public AudioSource pickupAudioSource;
     public AudioSource parentAudioSource;
-    /*public GameSessionManager gameSession;*/
-    /*public PlayerManager playerManager;*/
     public PlayerStats playerStats;
-    /* Approach adapted from https://docs.unity3d.com/410/Documentation/ScriptReference/index.Accessing_Other_Game_Objects.html */
+    
 
     Pickup_Spawn spawnPoint;
     [SerializeField] int scoreValue = 1000;

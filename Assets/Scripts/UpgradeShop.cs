@@ -35,31 +35,31 @@ public class UpgradeShop : MonoBehaviour
 
     public void UpgradeSpeed() {
         if (AttemptUpgrade(speedUpgradeCost)) {
-            float currentPlayerSpeed = playerStats.GetPlayerSpeedMultiplier();
+            float currentPlayerSpeed = PlayerStats.playerStatsInstance.GetPlayerSpeedMultiplier();
 
-            playerStats.SetPlayerSpeedMultiplier(currentPlayerSpeed + 0.2f);
+            PlayerStats.playerStatsInstance.SetPlayerSpeedMultiplier(currentPlayerSpeed + 0.2f);
 
-            playerStats.SetSpeedLevel(playerStats.GetSpeedLevel() + 1);
+            PlayerStats.playerStatsInstance.SetSpeedLevel(PlayerStats.playerStatsInstance.GetSpeedLevel() + 1);
 
-            speedUpgradeLevelText.text = "Lv" + playerStats.GetSpeedLevel().ToString();
+            speedUpgradeLevelText.text = "Lv" + PlayerStats.playerStatsInstance.GetSpeedLevel().ToString();
         }
     }
 
     public void UpgradeScoreMultiplier() {
         if (AttemptUpgrade(scoreMultiplierUpgradeCost)) {
-            float currentScoreMultiplier = playerStats.GetPlayerScoreMultiplier();
+            float currentScoreMultiplier = PlayerStats.playerStatsInstance.GetPlayerScoreMultiplier();
 
-            playerStats.SetPlayerScoreMultiplier(currentScoreMultiplier + 1f);
+            PlayerStats.playerStatsInstance.SetPlayerScoreMultiplier(currentScoreMultiplier + 1f);
 
-            playerStats.SetScoreMultiplierLevel(playerStats.GetScoreMultiplierLevel() + 1);
+            PlayerStats.playerStatsInstance.SetScoreMultiplierLevel(PlayerStats.playerStatsInstance.GetScoreMultiplierLevel() + 1);
 
-            scoreMultiplierLevelText.text = "Lv" + playerStats.GetScoreMultiplierLevel().ToString();
+            scoreMultiplierLevelText.text = "Lv" + PlayerStats.playerStatsInstance.GetScoreMultiplierLevel().ToString();
         }
     }
 
     bool AttemptUpgrade(int cost) {
-        if(playerStats.GetPlayerPickupsCollected() >= cost) {
-            playerStats.SetPickupsCollected(playerStats.GetPlayerPickupsCollected() - cost);
+        if(PlayerStats.playerStatsInstance.GetPlayerPickupsCollected() >= cost) {
+            PlayerStats.playerStatsInstance.SetPickupsCollected(PlayerStats.playerStatsInstance.GetPlayerPickupsCollected() - cost);
 
             RefreshCurrency();
 
@@ -70,15 +70,16 @@ public class UpgradeShop : MonoBehaviour
     }
 
     void RefreshCurrency() {
-        currencyText.text = "Currency: " + playerStats.GetPlayerPickupsCollected().ToString();
+        currencyText.text = "Currency: " + PlayerStats.playerStatsInstance.GetPlayerPickupsCollected().ToString();
+        GameSessionManager.gameSessionManagerInstance.SetPickupsCollectedText(PlayerStats.playerStatsInstance.GetPlayerPickupsCollected().ToString());
     }
 
     void OnEnable()
     {
-        playerStats = PlayerStats.playerStatsInstance;
+        /*PlayerStats.playerStatsInstance = PlayerStats.PlayerStats.playerStatsInstanceInstance;*/
 
-        speedUpgradeLevelText.text = "Lv" + playerStats.GetSpeedLevel().ToString();
-        scoreMultiplierLevelText.text = "Lv" + playerStats.GetScoreMultiplierLevel().ToString();
+        speedUpgradeLevelText.text = "Lv" + PlayerStats.playerStatsInstance.GetSpeedLevel().ToString();
+        scoreMultiplierLevelText.text = "Lv" + PlayerStats.playerStatsInstance.GetScoreMultiplierLevel().ToString();
 
         speedUpgradeCostText.text = "COST: " + speedUpgradeCost.ToString();
         scoreMultiplierCostText.text = "COST: " + scoreMultiplierUpgradeCost.ToString();

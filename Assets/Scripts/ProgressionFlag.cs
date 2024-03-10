@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class ProgressionFlag : MonoBehaviour
 {
-    public PlayerStats playerStats;
     [SerializeField] float numToCollect = 20f;
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(true);
+        if (PlayerStats.playerStatsInstance.IsParkUnlocked())
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerStats.GetPlayerPickupsCollected() >= numToCollect)
+        if (PlayerStats.playerStatsInstance.IsParkUnlocked())
         {
             this.gameObject.SetActive(false);
         }
