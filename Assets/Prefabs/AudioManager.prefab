@@ -687,7 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: BackgroundCity
-    clip: {fileID: 8300000, guid: 895d4d69511437c4d8db8e38ec56697d, type: 3}
+    clip: {fileID: 8300000, guid: dc9bfe7c889724c4cab6401d036f92ab, type: 3}
   sfxSounds:
   - name: Engine
     clip: {fileID: 8300000, guid: 7e7b0c25fa3a1bf4aa9f5e3ba907f49d, type: 3}
@@ -702,7 +702,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2d4a8d45fbda47744a3a4789565d81f3, type: 3}
   lightMusicSound:
   - name: LightBackgroundMusic
-    clip: {fileID: 8300000, guid: d653b85367314f540aaeafbd9a24d0a0, type: 3}
+    clip: {fileID: 8300000, guid: 2aea2f8a4c5a45041b2318b1628886ea, type: 3}
   brakingSound:
   - name: Braking
     clip: {fileID: 8300000, guid: 97ac29d0d98da9247b39fcdee7c110ec, type: 3}
