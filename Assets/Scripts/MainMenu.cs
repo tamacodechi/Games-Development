@@ -45,7 +45,7 @@ public class MainMenu : MonoBehaviour
         AudioManager.PlayMusic("BackgroundCity");
         GameSessionManager.gameSessionManagerInstance.TogglePlayerUIActive();
         GameSessionManager.gameSessionManagerInstance.timer.setTimeRemaining();
-
+        GameSessionManager.gameSessionManagerInstance.toggleTutorial();
     }
 
     public void ExitGame() {

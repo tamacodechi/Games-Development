@@ -41,16 +41,7 @@ public class GameSessionManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("HasPlayedTutorial") == 0)
-        {
-            tutorialObject.SetActive(true);
-            PlayerPrefs.SetInt("HasPlayedTutorial", 1);
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
-        return;
+
     }
 
     public void SetScoreText(string newScoreText)
@@ -94,5 +85,19 @@ public class GameSessionManager : MonoBehaviour
         roundOverUI.SetActive(false);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void toggleTutorial()
+    {
+        if (PlayerPrefs.GetInt("HasPlayedTutorial") == 0)
+        {
+            tutorialObject.SetActive(true);
+            PlayerPrefs.SetInt("HasPlayedTutorial", 1);
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        return;
     }
 }
