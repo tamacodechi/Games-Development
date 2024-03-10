@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2747378529282697813}
-  - component: {fileID: 995181879366259764}
   - component: {fileID: 3380085982385877564}
   - component: {fileID: 2525210349386062200}
+  - component: {fileID: 4609692691626639646}
   m_Layer: 0
   m_Name: Mixed2_Pickup
   m_TagString: Pickup
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &995181879366259764
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145420204967328157}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &3380085982385877564
 AudioSource:
   m_ObjectHideFlags: 0
@@ -163,6 +150,20 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   scoreValue: 1000
   collectibleValue: 1
+--- !u!136 &4609692691626639646
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145420204967328157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &952894271425459591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,7 +236,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64577032608133660, guid: d8d6e22fb12c1724096123ee86509be6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8d6e22fb12c1724096123ee86509be6, type: 3}
 --- !u!4 &952894271425831907 stripped
 Transform:
@@ -315,7 +317,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64697748863577962, guid: 0aec61f3a3bdb4a438a673a2ab728ce8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0aec61f3a3bdb4a438a673a2ab728ce8, type: 3}
 --- !u!4 &3353858730211442974 stripped
 Transform:
@@ -395,7 +398,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65383211988226926, guid: d0a449419dc6e404d94d5081fa710767, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d0a449419dc6e404d94d5081fa710767, type: 3}
 --- !u!4 &4224139820259529544 stripped
 Transform:
